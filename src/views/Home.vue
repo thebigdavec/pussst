@@ -6,9 +6,9 @@
   </p>
   <h2>What is {{ name }}?</h2>
   <p>
-    A safe place for cats to talk about their day-to-day activites, show of
-    their pet humans, compete against each other with games and make new friends
-    and enemies along the way.
+    {{ name }} is a safe place for cats to talk about their day-to-day
+    activites, show off their pet humans, compete against each other with games
+    and make new friends and enemies along the way.
   </p>
 </template>
 <script setup>

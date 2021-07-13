@@ -19,8 +19,8 @@
 <script setup>
 import { useStore } from 'vuex'
 const store = useStore()
-const appName = store.state.user.appName
-const author = store.state.user.name
+const appName = store.state.app.name
+const author = store.state.app.author
 const year =
   store.state.app.version[store.state.app.version.length - 1].date.split(' ')[2]
 </script>

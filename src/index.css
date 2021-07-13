@@ -1,16 +1,22 @@
 :root {
     /* Colors */
-    --clr-dark: #242424;
-    --clr-light: #e8e8e8;
+    --clr-dark: #1e252c;
+    --clr-light: #e8eaee;
+    --clr-cool: #99ff25;
+    --clr-hot: #ffc125;
+    --clr-accent-default: #68caed;
     --clr-bg: var(--bg-clr-preferred, var(--clr-light));
     --clr-fg: var(--fg-clr-preferred, var(--clr-dark));
+    --clr-accent: var(--clr-accent-preferred, var(--clr-accent-default));
+    --clr-highlight: var(--highlight-clr-preferred, var(--clr-cool));
     --clr-transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
     /* Fonts */
     --ff-headings: Overlock, Arial, Helvetica, sans-serif;
     --ff-body: 'Open Sans', Avenir, Helvetica, Arial, sans-serif;
     /* Spacing */
-    --sp-base: 1rem;
+    --sp-base: 1em;
     --ratio: 2;
+    --sp-margin: calc(var(--sp-base) / 2);
     --sp-padding: var(--sp-base) calc(var(--sp-base) * var(--ratio));
     --sp-gap: calc(var(--sp-base) * var(--ratio) / 2);
     --sp-gap-row: calc(var(--sp-base) / 2);
@@ -28,6 +34,8 @@
      :root {
         --bg-clr-preferred: var(--clr-light);
         --fg-clr-preferred: var(--clr-dark);
+        --highlight-clr-preferred: var(--clr-cool);
+        --clr-accent-preferred: var(var(--clr-accent-default));
     }
 }
 
@@ -35,6 +43,8 @@
      :root {
         --bg-clr-preferred: var(--clr-dark);
         --fg-clr-preferred: var(--clr-light);
+        --highlight-clr-preferred: var(--clr-hot);
+        --clr-accent-preferred: var(var(--clr-accent-default));
     }
 }
 
@@ -42,7 +52,6 @@ body {
     font-family: var(--ff-body);
     background-color: var(--clr-bg);
     color: var(--clr-fg);
-    margin: 0;
     transition: var(--clr-transition);
 }
 
@@ -95,28 +104,93 @@ a:focus-visible::after {
     border-bottom: 1px dotted var(--clr-fg);
 }
 
+form {
+    max-width: 640px;
+    margin-inline: auto;
+    display: grid;
+    row-gap: var(--sp-gap-row);
+}
+
+.form-group {
+    display: grid;
+}
+
+.form-group label {
+    font-size: clamp(1rem, 1.1vw, 1.5rem);
+}
+
+.form-group input {
+    padding: var(--sp-padding);
+    font-size: clamp(1rem, 1.1vw, 1.5rem);
+    border: 2px solid;
+    border-color: var(--clr-bg);
+    outline: none;
+}
+
+.form-group input:hover {
+    border-color: var(--clr-highlight);
+}
+
+.form-group input:focus,
+.form-group input:active {
+    border-color: var(--clr-accent);
+}
+
+.form-group button {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: clamp(1rem, 1.1vw, 1.5rem);
+    padding: var(--sp-padding);
+    justify-self: end;
+    background-color: var(--clr-accent);
+    border: 2px solid;
+    border-color: var(--clr-bg);
+}
+
+.form-group button:hover,
+.form-group button:focus-visible {
+    border-color: var(--clr-highlight);
+}
+
+.form-group button:active {
+    background-color: var(--clr-highlight);
+    border-color: var(--clr-accent);
+}
+
 .container {
     padding: var(--sp-padding);
+    width: 90%;
+    max-width: 1280px;
+    margin-inline: auto;
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
     font-family: var(--ff-headings);
     font-weight: 900;
     letter-spacing: 1px;
-    margin-top: 1.4em;
+    margin-block-start: calc(var(--sp-margin) * var(--ratio));
 }
 
 :is(h1, h2, h3, h4, h5, h6, p) {
-    margin-bottom: 1em;
+    margin-block-end: var(--sp-margin);
 }
 
 h1 {
-    font-size: 3.4rem;
-    font-size: clamp(2.4rem, 3.7vw, 5rem);
+    font-size: clamp(2.75rem, 3.7vw, 5rem);
+}
+
+h2 {
+    font-size: clamp(2rem, 2.8vw, 4rem);
 }
 
 p {
+    font-size: clamp(1rem, 1.1vw, 1.5rem);
     letter-spacing: 0.75px;
     line-height: 1.6;
     max-width: 70ch;
+}
+
+small {
+    font-size: clamp(0.7rem, 1vw, 1.2rem);
 }

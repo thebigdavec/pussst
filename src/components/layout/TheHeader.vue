@@ -11,6 +11,8 @@
         <li><RouterLink :to="{ name: 'Home' }">Home</RouterLink></li>
         <li><RouterLink :to="{ name: 'Friends' }">Friends</RouterLink></li>
         <li><RouterLink :to="{ name: 'Sign Out' }">Sign Out</RouterLink></li>
+        <li><RouterLink :to="{ name: 'Sign In' }">Sign In</RouterLink></li>
+        <li><RouterLink :to="{ name: 'Sign Up' }">Sign Up</RouterLink></li>
       </ul>
     </nav>
   </header>
