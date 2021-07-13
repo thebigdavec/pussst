@@ -1,0 +1,122 @@
+:root {
+    /* Colors */
+    --clr-dark: #242424;
+    --clr-light: #e8e8e8;
+    --clr-bg: var(--bg-clr-preferred, var(--clr-light));
+    --clr-fg: var(--fg-clr-preferred, var(--clr-dark));
+    --clr-transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+    /* Fonts */
+    --ff-headings: Overlock, Arial, Helvetica, sans-serif;
+    --ff-body: 'Open Sans', Avenir, Helvetica, Arial, sans-serif;
+    /* Spacing */
+    --sp-base: 1rem;
+    --ratio: 2;
+    --sp-padding: var(--sp-base) calc(var(--sp-base) * var(--ratio));
+    --sp-gap: calc(var(--sp-base) * var(--ratio) / 2);
+    --sp-gap-row: calc(var(--sp-base) / 2);
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@media (prefers-color-scheme: light) {
+     :root {
+        --bg-clr-preferred: var(--clr-light);
+        --fg-clr-preferred: var(--clr-dark);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+     :root {
+        --bg-clr-preferred: var(--clr-dark);
+        --fg-clr-preferred: var(--clr-light);
+    }
+}
+
+body {
+    font-family: var(--ff-body);
+    background-color: var(--clr-bg);
+    color: var(--clr-fg);
+    margin: 0;
+    transition: var(--clr-transition);
+}
+
+#app {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    align-items: space-between;
+}
+
+a {
+    position: relative;
+    text-decoration: none;
+    letter-spacing: 1px;
+    color: var(--clr-fg);
+    opacity: 0.8;
+    transition: opacity 200ms ease-in-out;
+}
+
+a:hover,
+a:focus-visible {
+    opacity: 1;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    left: 51%;
+    right: 51%;
+    bottom: -2px;
+    height: 2px;
+    background-color: var(--clr-fg);
+    transition: left 200ms ease-in-out, right 200ms ease-in-out;
+}
+
+a:hover::after,
+a:focus-visible::after {
+    left: 0;
+    right: 0;
+}
+
+.router-link-active {
+    opacity: 1;
+}
+
+.router-link-active::after {
+    left: 10%;
+    right: 10%;
+    background-color: transparent;
+    border-bottom: 1px dotted var(--clr-fg);
+}
+
+.container {
+    padding: var(--sp-padding);
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--ff-headings);
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-top: 1.4em;
+}
+
+:is(h1, h2, h3, h4, h5, h6, p) {
+    margin-bottom: 1em;
+}
+
+h1 {
+    font-size: 3.4rem;
+    font-size: clamp(2.4rem, 3.7vw, 5rem);
+}
+
+p {
+    letter-spacing: 0.75px;
+    line-height: 1.6;
+    max-width: 70ch;
+}
