@@ -24,4 +24,4 @@ const firebaseConfig = {
 }
 
 const firebaseApp = initializeApp(firebaseConfig)
-createApp(App).use(router).use(store).mount('#app')
+createApp(App).use(router).use(store).use(firebaseApp).mount('#app')
