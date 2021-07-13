@@ -12,7 +12,7 @@ export default {
   getters: {},
   mutations: {
     SET_VERSION(state, payload) {
-      month = [
+      const months = [
         'January',
         'February',
         'March',
@@ -28,7 +28,7 @@ export default {
       ]
       let date = new Date()
       const year = date.getFullYear()
-      const month = month[date.getMonth()]
+      const month = months[date.getMonth()]
       const day = date.getDate + ''
       date = `${day} ${month} ${year}`
       state.version.push = { payload, date }
