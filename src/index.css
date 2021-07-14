@@ -111,6 +111,24 @@ form {
     row-gap: var(--sp-gap-row);
 }
 
+fieldset {
+    padding: var(--sp-padding);
+    border-color: var(--clr-accent);
+}
+
+fieldset:focus-within {
+    border-color: var(--clr-highlight);
+}
+
+fieldset legend {
+    padding: var(--sp-margin);
+    color: var(--clr-accent);
+}
+
+fieldset:focus-within legend {
+    color: var(--clr-highlight);
+}
+
 .form-group {
     display: grid;
 }
