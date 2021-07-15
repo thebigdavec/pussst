@@ -10,18 +10,40 @@
       <ul>
         <li><RouterLink :to="{ name: 'Home' }">Home</RouterLink></li>
         <li><RouterLink :to="{ name: 'Friends' }">Friends</RouterLink></li>
-        <li><RouterLink :to="{ name: 'Sign Out' }">Sign Out</RouterLink></li>
-        <li><RouterLink :to="{ name: 'Sign In' }">Sign In</RouterLink></li>
-        <li><RouterLink :to="{ name: 'Sign Up' }">Sign Up</RouterLink></li>
+        <li v-if="isSignedIn">
+          <button @click="signOut">Sign Out</button>
+        </li>
+        <li v-if="!isSignedIn">
+          <RouterLink :to="{ name: 'Sign Up' }">Sign Up</RouterLink>
+        </li>
+        <li v-if="!isSignedIn">
+          <RouterLink :to="{ name: 'Sign In' }">Sign In</RouterLink>
+        </li>
       </ul>
+      <span v-if="displayName">{{ displayName }}</span>
     </nav>
   </header>
 </template>
 // //
 <script setup>
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
+import { getAuth } from 'firebase/auth'
+const router = useRouter()
 const store = useStore()
-const appName = store.state.app.name
+const auth = getAuth()
+const appName = computed(() => {
+  return store.state.app.name
+})
+const isSignedIn = computed(() => {
+  return store.getters.isSignedIn
+})
+const displayName = computed(() => store.state.user.displayName)
+const signOut = () => {
+  auth.signOut()
+  router.push({ name: 'Home' })
+}
 </script>
 
 <style scoped>

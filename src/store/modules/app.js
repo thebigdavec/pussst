@@ -9,7 +9,10 @@ export default {
       }
     ]
   }),
-  getters: {},
+  getters: {
+    firstVersionNumber: state => state.version[0].number,
+    firstVersionDate: state => state.version[0].date
+  },
   mutations: {
     SET_VERSION(state, payload) {
       const months = [

@@ -21,9 +21,7 @@ const appname = computed(() => {
 const author = computed(() => {
   return store.state.app.author
 })
-const version = computed(() => {
-  return store.state.app.version[0].number
-})
+const version = store.getters.firstVersionNumber
 const versionDate = computed(() => {
   return store.state.app.version[0].date
 })

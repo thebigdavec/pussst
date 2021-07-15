@@ -6,23 +6,30 @@
       </div>
       <div class="title">{{ appName }}</div>
     </div>
-    <div class="copyright">&copy; {{ year }} {{ author }}</div>
+    <div class="copyright">
+      &copy; {{ year }} {{ author }}
+      <span v-if="userEmail">
+        <small>user: {{ userEmail }} - {{ userName }}</small>
+      </span>
+    </div>
     <nav>
       <ul>
         <li><RouterLink :to="{ name: 'Home' }">Home</RouterLink></li>
-        <li><RouterLink :to="{ name: 'Sign Out' }">Sign Out</RouterLink></li>
       </ul>
     </nav>
   </footer>
 </template>
 // //
 <script setup>
+import { computed } from 'vue'
 import { useStore } from 'vuex'
 const store = useStore()
 const appName = store.state.app.name
 const author = store.state.app.author
 const year =
   store.state.app.version[store.state.app.version.length - 1].date.split(' ')[2]
+const userEmail = computed(() => store.state.user.email)
+const userName = computed(() => store.state.user.name)
 </script>
 
 <style scoped>

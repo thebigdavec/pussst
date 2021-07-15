@@ -59,20 +59,35 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile
+} from 'firebase/auth'
 const name = ref('')
 const email = ref('')
 const password = ref('')
-const authUser = ref('')
+const router = useRouter()
+const store = useStore()
 
 const submitDetails = event => {
-  // console.log(name.value, email.value, password.value)
-  authUser.value = getAuth()
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-}
-const echo = () => {
-  // console.log(name.value)
+  const auth = getAuth()
+  createUserWithEmailAndPassword(auth, email.value, password.value)
+    .then(userCredential => {
+      store.dispatch('saveName', name.value)
+      updateProfile(auth.currentUser, {
+        displayName: name.value
+      })
+        .then(() => console.log('Profile updated'))
+        .catch(error => console.log('Error:', error.code, error.message))
+      router.push({ name: 'Home' })
+    })
+    .catch(error => {
+      console.log('Error:', error.code, error.message)
+    })
 }
 </script>
 

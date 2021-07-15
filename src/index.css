@@ -2,13 +2,14 @@
     /* Colors */
     --clr-dark: #1e252c;
     --clr-light: #e8eaee;
-    --clr-cool: #99ff25;
-    --clr-hot: #ffc125;
-    --clr-accent-default: #68caed;
+    --clr-cool: #68caed;
+    --clr-hot: #ffa825;
+    --clr-accent-default: var(--clr-cool);
+    --clr-highlight-default: var(--clr-hot);
     --clr-bg: var(--bg-clr-preferred, var(--clr-light));
     --clr-fg: var(--fg-clr-preferred, var(--clr-dark));
     --clr-accent: var(--clr-accent-preferred, var(--clr-accent-default));
-    --clr-highlight: var(--highlight-clr-preferred, var(--clr-cool));
+    --clr-highlight: var(--highlight-clr-preferred, var(--clr-highlight-default));
     --clr-transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
     /* Fonts */
     --ff-headings: Overlock, Arial, Helvetica, sans-serif;
