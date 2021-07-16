@@ -2,7 +2,9 @@
   <header>
     <div class="brand">
       <div class="logo">
-        <img src="../../assets/images/cat-yin-yang-256.png" alt="" />
+        <RouterLink :to="{ name: 'Home' }">
+          <img src="../../assets/images/cat-yin-yang-256.png" alt="" />
+        </RouterLink>
       </div>
       <div class="title">{{ appName }}</div>
     </div>
