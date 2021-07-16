@@ -19,19 +19,7 @@ export default {
   },
   actions: {
     saveName({ commit }, data) {
-      let name
-      if (data) {
-        name = data
-          .trim(' ')
-          .split(' ')
-          .map(wordInName => {
-            const firstLetter = wordInName[0].toUpperCase()
-            const restOfWord = wordInName.slice(1).toLowerCase()
-            return firstLetter + restOfWord
-          })
-          .join(' ')
-      }
-      commit('SET_NAME', name)
+      commit('SET_NAME', data)
     },
     saveEmail({ commit }, data) {
       commit('SET_EMAIL', data)

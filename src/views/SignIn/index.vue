@@ -15,8 +15,7 @@
           id="email"
           autocomplete="email"
           placeholder="Enter email"
-          v-model="email"
-          autofocus
+          v-model.trim="email"
           required
         />
       </div>
@@ -31,7 +30,8 @@
           id="password"
           autocomplete="password"
           placeholder="Choose a password"
-          v-model="password"
+          minlength="6"
+          v-model.trim="password"
           required
         />
       </div>
@@ -43,7 +43,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
@@ -52,6 +52,9 @@ const email = ref('')
 const password = ref('')
 const router = useRouter()
 const store = useStore()
+onMounted(() => {
+  document.getElementById('email').focus()
+})
 const submitDetails = event => {
   console.log(name.value, email.value, password.value)
   const auth = getAuth()

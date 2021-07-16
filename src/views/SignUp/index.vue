@@ -15,8 +15,7 @@
           id="name"
           autocomplete="username"
           placeholder="Enter username"
-          v-model="name"
-          autofocus
+          v-model.trim="name"
           required
           @input="echo"
         />
@@ -32,7 +31,7 @@
           id="email"
           autocomplete="email"
           placeholder="Enter email"
-          v-model="email"
+          v-model.trim="email"
           required
         />
       </div>
@@ -47,7 +46,8 @@
           id="password"
           autocomplete="password"
           placeholder="Choose a password"
-          v-model="password"
+          minlength="6"
+          v-model.trim="password"
           required
         />
       </div>
@@ -59,7 +59,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import {
@@ -72,7 +72,9 @@ const email = ref('')
 const password = ref('')
 const router = useRouter()
 const store = useStore()
-
+onMounted(() => {
+  document.getElementById('name').focus()
+})
 const submitDetails = event => {
   const auth = getAuth()
   createUserWithEmailAndPassword(auth, email.value, password.value)
@@ -86,6 +88,11 @@ const submitDetails = event => {
       router.push({ name: 'Home' })
     })
     .catch(error => {
+      if (error.code === 'auth/weak-password') {
+        const passwordField = document.getElementById('password')
+        passwordField.value = ''
+        passwordField.placeholder = 'Please choose a stronger password.'
+      }
       console.log('Error:', error.code, error.message)
     })
 }
