@@ -16,6 +16,7 @@
           autocomplete="email"
           placeholder="Enter email"
           v-model="email"
+          autofocus
           required
         />
       </div>
