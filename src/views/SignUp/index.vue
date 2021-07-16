@@ -1,6 +1,6 @@
 <template>
+  <h1>Join us!</h1>
   <form @submit.prevent="submitDetails">
-    <h1>Join us!</h1>
     <h3>Fill in the form below to join our Catty Community</h3>
     <fieldset>
       <legend>Enter the details of your pet human</legend>

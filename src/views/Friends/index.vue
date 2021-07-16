@@ -1,3 +1,3 @@
 <template>
-  <h2>Friends will be enemies</h2>
+  <h1>Friends will be enemies</h1>
 </template>

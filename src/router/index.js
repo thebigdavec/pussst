@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Friends from '../views/Friends/index.vue'
-import SignOut from '../views/SignOut/index.vue'
 import SignIn from '../views/SignIn/index.vue'
 import SignUp from '../views/SignUp/index.vue'
 
@@ -18,14 +17,6 @@ const routes = [
     path: '/friends',
     name: 'Friends',
     component: Friends,
-    meta: {
-      requiresAuth: true
-    }
-  },
-  {
-    path: '/signout',
-    name: 'Sign Out',
-    component: SignOut,
     meta: {
       requiresAuth: true
     }

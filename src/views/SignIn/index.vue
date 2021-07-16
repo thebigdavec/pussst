@@ -1,6 +1,6 @@
 <template>
+  <h1>Sign in to see what's happening!</h1>
   <form @submit.prevent="submitDetails">
-    <h1>Sign in to see what's happening!</h1>
     <h3>Fill in the form below to catch up.</h3>
     <fieldset>
       <legend>Enter the details of your pet human</legend>
