@@ -42,6 +42,7 @@ footer {
   align-items: center;
   padding: var(--sp-padding);
   opacity: 0.8;
+  box-shadow: 0 0 3px var(--clr-fg);
 }
 .brand {
   display: flex;

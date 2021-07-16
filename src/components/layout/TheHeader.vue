@@ -55,6 +55,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: var(--sp-padding);
+  box-shadow: 0 0 3px var(--clr-fg);
 }
 .brand {
   display: flex;
