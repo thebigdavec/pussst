@@ -11,7 +11,9 @@
     <nav>
       <ul>
         <li><RouterLink :to="{ name: 'Home' }">Home</RouterLink></li>
-        <li><RouterLink :to="{ name: 'Friends' }">Friends</RouterLink></li>
+        <li v-if="isSignedIn">
+          <RouterLink :to="{ name: 'Friends' }">Friends</RouterLink>
+        </li>
         <li v-if="isSignedIn">
           <button @click="signOut">Sign Out</button>
         </li>
