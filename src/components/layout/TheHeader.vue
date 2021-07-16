@@ -76,8 +76,11 @@ header {
 nav ul {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   list-style: none;
   gap: var(--sp-gap);
   font-family: var(--ff-body);
+}
+nav button {
 }
 </style>

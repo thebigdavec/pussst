@@ -19,6 +19,8 @@
     --ratio: 2;
     --sp-margin: calc(var(--sp-base) / 4);
     --sp-padding: var(--sp-base) calc(var(--sp-base) * var(--ratio));
+    --sp-padding-small: calc(var(--sp-base) / 2) calc(var(--sp-base) * var(--ratio) / 2);
+    /* --sp-padding-small: 2rem; */
     --sp-gap: calc(var(--sp-base) * var(--ratio));
     --sp-gap-row: calc(var(--sp-base));
 }
@@ -161,9 +163,10 @@ fieldset:focus-within legend {
     letter-spacing: 1px;
     font-weight: 700;
     font-size: clamp(1rem, 1.1vw, 1.5rem);
-    padding: var(--sp-padding);
+    padding: var(--sp-padding-small);
     justify-self: end;
     background-color: var(--clr-accent);
+    color: var(--clr-dark);
     border: 2px solid;
     border-color: var(--clr-bg);
 }
@@ -218,4 +221,28 @@ p {
 
 small {
     font-size: clamp(0.7rem, 1vw, 1.2rem);
+}
+
+button {
+    cursor: pointer;
+    border: 1px solid #8888;
+    background-color: var(--clr-bg);
+    color: var(--clr-fg);
+    font-size: inherit;
+    font-family: inherit;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    transition: opacity 200ms ease-in-out, background-color 200ms ease-in-out, color 200ms ease-in-out;
+    padding: var(--sp-padding-small);
+}
+
+button:hover,
+button:focus-visible {
+    opacity: 1;
+    background-color: var(--clr-accent);
+    color: var(--clr-dark);
+}
+
+button:active {
+    background-color: var(--clr-highlight);
 }
