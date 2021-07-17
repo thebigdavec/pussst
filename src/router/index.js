@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Friends from '../views/Friends/index.vue'
 import SignIn from '../views/SignIn/index.vue'
 import SignUp from '../views/SignUp/index.vue'
+import Welcome from '../views/Welcome/index.vue'
 
 const routes = [
   {
@@ -35,6 +36,14 @@ const routes = [
     component: SignUp,
     meta: {
       requiresAuth: false
+    }
+  },
+  {
+    path: '/welcome',
+    name: 'Welcome',
+    component: Welcome,
+    meta: {
+      requiresAuth: true
     }
   }
 ]

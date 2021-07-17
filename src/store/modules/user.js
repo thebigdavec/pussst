@@ -1,20 +1,22 @@
 export default {
   state: () => ({
+    uid: null,
     name: '',
     email: ''
   }),
   getters: {
     firstName: state => state.name.split(' ')[0],
-    isSignedIn: state => (state.email !== '' ? true : false)
+    isSignedIn: state => (state.uid ? true : false)
   },
   mutations: {
+    SET_UID(state, payload) {
+      state.uid = payload
+    },
     SET_NAME(state, payload) {
       state.name = payload
-      console.log('Changed name to', payload)
     },
     SET_EMAIL(state, payload) {
       state.email = payload
-      console.log('Changed email to', payload)
     }
   },
   actions: {
@@ -24,7 +26,13 @@ export default {
     saveEmail({ commit }, data) {
       commit('SET_EMAIL', data)
     },
+    setCurrentUser({ commit }, data) {
+      commit('SET_UID', data.uid)
+      data.name ? commit('SET_NAME', data.name) : commit('SET_NAME', 'User')
+      commit('SET_EMAIL', data.email)
+    },
     signOut({ commit }) {
+      commit('SET_UID', null)
       commit('SET_NAME', '')
       commit('SET_EMAIL', '')
     }

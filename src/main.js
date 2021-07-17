@@ -3,8 +3,6 @@ import { createApp } from 'vue'
 import './index.css'
 
 import App from './App.vue'
-import router from './router'
-import store from './store'
 
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 import { initializeApp } from 'firebase/app'
@@ -28,14 +26,22 @@ const auth = getAuth(firebaseApp)
 const firestore = getFirestore(firebaseApp)
 const storage = getStorage(firebaseApp)
 
+import router from './router'
+import store from './store'
+
 import { onAuthStateChanged } from 'firebase/auth'
 onAuthStateChanged(auth, user => {
   if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
     const uid = user.uid
-    store.dispatch('saveEmail', user.email)
-    store.dispatch('saveName', user.auth.currentUser.displayName)
+    store.dispatch('setCurrentUser', {
+      uid,
+      email: user.email,
+      name: user.auth.currentUser.displayName
+    })
+    // store.dispatch('saveEmail', user.email)
+    // store.dispatch('saveName', user.auth.currentUser.displayName)
     // ...
   } else {
     // User is signed out

@@ -56,14 +56,15 @@ onMounted(() => {
   document.getElementById('email').focus()
 })
 const submitDetails = event => {
-  console.log(name.value, email.value, password.value)
   const auth = getAuth()
   signInWithEmailAndPassword(auth, email.value, password.value)
     .then(userCredential => {
-      console.log(userCredential.user)
-      store.dispatch('saveEmail', email.value)
-      store.dispatch('saveName', userCredential.user.displayName)
-      router.push({ name: 'Home' })
+      store.dispatch('setCurrentUser', {
+        uid: userCredential.user.uid,
+        name: userCredential.user.displayName,
+        email: userCredential.user.email
+      })
+      router.push({ name: 'Welcome' })
     })
     .catch(error => {
       console.log('Error:', error.code, error.message)

@@ -79,13 +79,18 @@ const submitDetails = event => {
   const auth = getAuth()
   createUserWithEmailAndPassword(auth, email.value, password.value)
     .then(userCredential => {
-      store.dispatch('saveName', name.value)
       updateProfile(auth.currentUser, {
         displayName: name.value
       })
-        .then(() => console.log('Profile updated'))
+        .then(() => {
+          store.dispatch('setCurrentUser', {
+            uid: userCredential.user.uid,
+            name: userCredential.user.displayName,
+            email: userCredential.user.email
+          })
+        })
         .catch(error => console.log('Error:', error.code, error.message))
-      router.push({ name: 'Home' })
+      router.push({ name: 'Welcome' })
     })
     .catch(error => {
       if (error.code === 'auth/weak-password') {

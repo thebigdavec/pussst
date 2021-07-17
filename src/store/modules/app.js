@@ -11,7 +11,11 @@ export default {
   }),
   getters: {
     firstVersionNumber: state => state.version[0].number,
-    firstVersionDate: state => state.version[0].date
+    firstVersionDate: state => state.version[0].date,
+    currentVersionYear: state => {
+      const year = state.version[state.version.length - 1].date.split(' ')[2]
+      return year
+    }
   },
   mutations: {
     SET_VERSION(state, payload) {
