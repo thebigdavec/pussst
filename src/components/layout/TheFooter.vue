@@ -8,7 +8,10 @@
       </div>
       <div class="title">{{ appName }}</div>
     </div>
-    <div class="copyright">&copy; {{ year }} {{ author }}</div>
+    <div class="copyright">
+      &copy; {{ year }} {{ author }}
+      <!-- <small v-if="isSignedIn">- Welcome, {{ firstName }}</small> -->
+    </div>
     <nav>
       <ul>
         <li><RouterLink :to="{ name: 'Home' }">Home</RouterLink></li>
@@ -18,12 +21,24 @@
 </template>
 // //
 <script setup>
+import { computed } from 'vue'
 import { useStore } from 'vuex'
 const store = useStore()
-const appName = store.state.app.name
-const author = store.state.app.author
-const year =
-  store.state.app.version[store.state.app.version.length - 1].date.split(' ')[2]
+const isSignedIn = computed(() => {
+  return store.getters.isSignedIn
+})
+// const firstName = computed(() => {
+//   return store.getters.firstName
+// })
+const appName = computed(() => {
+  return store.state.app.name
+})
+const author = computed(() => {
+  return store.state.app.author
+})
+const year = computed(() => {
+  return store.getters.currentVersionYear
+})
 </script>
 
 <style scoped>

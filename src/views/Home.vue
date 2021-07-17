@@ -1,6 +1,7 @@
 <template>
   <h1>{{ appName }}</h1>
   <h2>The social network for cats.</h2>
+  <h3 v-if="isSignedIn">Welcome, {{ firstName }}</h3>
   <p>This app is called {{ appName }} and it was created by {{ author }}.</p>
   <p>
     The first version was V{{ version }} and was created on {{ versionDate }}.
@@ -16,6 +17,12 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 const store = useStore()
+const firstName = computed(() => {
+  return store.getters.firstName
+})
+const isSignedIn = computed(() => {
+  return store.getters.isSignedIn
+})
 const appName = computed(() => {
   return store.state.app.name
 })
