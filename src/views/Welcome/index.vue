@@ -7,9 +7,9 @@
   <p>Email: {{ userEmail }}</p>
 
   <div>
-    <BaseProgressBar :time="time" />
     You will shortly be redirected to the home page or you can click to
     continue.
+    <BaseProgressBar :time="time" />
   </div>
 </template>
 
