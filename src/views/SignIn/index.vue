@@ -74,7 +74,7 @@ const submitDetails = event => {
       store.dispatch('showAlert', {
         type: 'success',
         message: `Sign in successful. Welcome back, ${store.getters.firstName}`,
-        time: 5
+        time: 3
       })
       router.push({ name: 'Welcome' })
     })
