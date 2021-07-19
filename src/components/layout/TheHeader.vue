@@ -1,33 +1,13 @@
 <template>
   <header>
-    <div class="brand">
-      <div class="logo">
-        <RouterLink :to="{ name: 'Home' }">
-          <img src="../../assets/images/cat-yin-yang-256.png" alt="" />
-        </RouterLink>
-      </div>
-      <div class="title">{{ appName }}</div>
-    </div>
+    <TheBrand />
     <NavBar />
   </header>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useRouter } from 'vue-router'
-import { useStore } from 'vuex'
-import { getAuth } from 'firebase/auth'
+import TheBrand from './TheBrand.vue'
 import NavBar from '../UI/NavBar.vue'
-const router = useRouter()
-const store = useStore()
-const auth = getAuth()
-const appName = computed(() => {
-  return store.state.app.name
-})
-const isSignedIn = computed(() => {
-  return store.getters.isSignedIn
-})
-const displayName = computed(() => store.state.user.displayName)
 </script>
 
 <style scoped>
@@ -38,32 +18,5 @@ header {
   align-items: center;
   padding: var(--sp-padding);
   box-shadow: 0 0 3px var(--clr-fg);
-}
-.brand {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-gap);
-}
-.logo {
-  width: 2rem;
-  aspect-ratio: 1;
-  overflow: hidden;
-  border-radius: 50px;
-}
-.logo img {
-  width: 100%;
-}
-.title {
-  font-weight: 900;
-  letter-spacing: 1px;
-  font-size: 2rem;
-}
-nav ul {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  list-style: none;
-  gap: var(--sp-gap);
-  font-family: var(--ff-body);
 }
 </style>

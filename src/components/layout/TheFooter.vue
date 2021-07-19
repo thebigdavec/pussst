@@ -1,13 +1,6 @@
 <template>
   <footer>
-    <div class="brand">
-      <div class="logo">
-        <RouterLink :to="{ name: 'Home' }">
-          <img src="../../assets/images/cat-yin-yang-256.png" alt="" />
-        </RouterLink>
-      </div>
-      <div class="title">{{ appName }}</div>
-    </div>
+    <TheBrand minimal />
     <div class="copyright">
       &copy; {{ year }} {{ author }}
       <!-- <small v-if="isSignedIn">- Welcome, {{ firstName }}</small> -->
@@ -19,13 +12,11 @@
 <script setup>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
+import TheBrand from './TheBrand.vue'
 import NavBar from '../UI/NavBar.vue'
 const store = useStore()
 const isSignedIn = computed(() => {
   return store.getters.isSignedIn
-})
-const appName = computed(() => {
-  return store.state.app.name
 })
 const author = computed(() => {
   return store.state.app.author
@@ -46,23 +37,7 @@ footer {
   box-shadow: 0 0 3px var(--clr-fg);
   margin-block-start: var(--sp-margin);
 }
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 2ch;
-}
-.logo {
-  width: 1.4rem;
-  aspect-ratio: 1;
-  overflow: hidden;
-  border-radius: 50px;
-}
-.logo img {
-  width: 100%;
-}
-.title {
-  font-weight: 900;
-  letter-spacing: 1px;
-  font-size: 1.4rem;
+.copyright {
+  font-size: small;
 }
 </style>

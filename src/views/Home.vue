@@ -1,8 +1,6 @@
 <template>
-  <h1>{{ appName }}</h1>
   <h2>The social network for cats.</h2>
-  <h2>What is {{ appName }}?</h2>
-  <h3 v-if="isSignedIn">Welcome, {{ firstName }}</h3>
+  <h3>What is {{ appName }}?</h3>
   <p>
     {{ appName }} is a safe place for cats to talk about their day-to-day
     activities, show off their pet humans, compete against each other with games
