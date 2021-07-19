@@ -32,7 +32,44 @@ const message = computed(() => {
 }
 
 #alert p {
+  width: fit-content;
+  display: block;
+  position: relative;
   margin: 0 auto;
+}
+#alert p::before,
+#alert p::after {
+  content: '';
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+  background-color: currentColor;
+  opacity: 0.8;
+  top: 50%;
+  box-shadow: -7px -7px 0 -2px currentColor, 0 -11px 0 -2px currentColor,
+    7px -7px 0 -2px currentColor;
+  transform-origin: top;
+}
+#alert p::before {
+  left: -1.5rem;
+  transform: translatey(-50%) rotate(-10deg);
+  animation: wave-before 0.5s infinite alternate ease-in-out;
+}
+#alert p::after {
+  right: -1.5rem;
+  transform: translatey(-50%) rotate(10deg);
+  animation: wave-after 0.5s infinite alternate ease-in-out;
+}
+@keyframes wave-before {
+  to {
+    transform: translatey(-50%) rotate(10deg);
+  }
+}
+@keyframes wave-after {
+  to {
+    transform: translatey(-50%) rotate(-10deg);
+  }
 }
 
 .error {

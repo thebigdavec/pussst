@@ -25,7 +25,8 @@ const appName = computed(() => {
 const sendAlert = () => {
   store.dispatch('showAlert', {
     type: 'error',
-    message: 'This alert is only here for testing purposes. Please ignore it.',
+    message:
+      'This alert is only here for testing purposes. Please ignore it. Please send any feedback, suggestion or bug reports to dave@davecollison.tech',
     time: 5
   })
 }
