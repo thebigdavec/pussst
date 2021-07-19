@@ -28,6 +28,7 @@ const message = computed(() => {
   text-align: center;
   padding: var(--sp-padding-small);
   z-index: -1;
+  color: var(--clr-light);
 }
 
 #alert p {
