@@ -35,6 +35,13 @@
           required
         />
       </div>
+      <div>
+        Forgotten your password?
+        <RouterLink :to="{ name: 'request-password-reset' }">
+          Click here
+        </RouterLink>
+        to request a password reset.
+      </div>
     </fieldset>
     <div class="form-group">
       <button type="submit">Sign In</button>

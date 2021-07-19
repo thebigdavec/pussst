@@ -65,7 +65,8 @@ import { useStore } from 'vuex'
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  updateProfile
+  updateProfile,
+  sendEmailVerification
 } from 'firebase/auth'
 const name = ref('')
 const email = ref('')
@@ -88,10 +89,24 @@ const submitDetails = event => {
             name: userCredential.user.displayName,
             email: userCredential.user.email
           })
-          store.dispatch('showAlert', {
-            type: 'success',
-            message: `Welcome aboard, ${userCredential.user.displayName}. You have successfully registered with ${store.state.app.name}`
-          })
+          store
+            .dispatch('showAlert', {
+              type: 'success',
+              message: `Welcome aboard, ${userCredential.user.displayName}. You have successfully registered with ${store.state.app.name}`
+            })
+            .then(() => {
+              sendEmailVerification(auth.currentUser)
+                .then(() => {
+                  console.log('Email verification sent')
+                })
+                .catch(error =>
+                  console.log(
+                    'Email verification error:',
+                    error.code,
+                    error.message
+                  )
+                )
+            })
         })
         .catch(error => console.log('Error:', error.code, error.message))
       router.push({ name: 'Welcome' })

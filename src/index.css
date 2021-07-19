@@ -34,6 +34,7 @@
     --sp-margin: calc(var(--sp-base) / 1.5);
     --sp-padding: var(--sp-base) calc(var(--sp-base) * var(--ratio));
     --sp-padding-small: calc(var(--sp-base) / 2) calc(var(--sp-base) * var(--ratio) / 2);
+    --sp-padding-x-small: calc(var(--sp-base) / 4) calc(var(--sp-base) * var(--ratio) / 4);
     /* --sp-padding-small: 2rem; */
     --sp-gap: calc(var(--sp-base) * var(--ratio) / 2);
     --sp-gap-row: calc(var(--sp-base) / 2);
@@ -203,6 +204,11 @@ fieldset:focus-within legend {
     border-color: var(--clr-bg);
 }
 
+.form-group button.btn-small {
+    padding: var(--sp-padding-x-small);
+    text-transform: initial;
+}
+
 .form-group button:hover,
 .form-group button:focus-visible {
     border-color: var(--clr-highlight);
@@ -265,6 +271,10 @@ button {
     opacity: 0.8;
     transition: opacity 200ms ease-in-out, background-color 200ms ease-in-out, color 200ms ease-in-out;
     padding: var(--sp-padding-small);
+}
+
+button.small {
+    padding: var(--sp-padding-x-small);
 }
 
 button:hover,

@@ -4,6 +4,7 @@ import Friends from '../views/Friends/index.vue'
 import SignIn from '../views/SignIn/index.vue'
 import SignUp from '../views/SignUp/index.vue'
 import Welcome from '../views/Welcome/index.vue'
+import RequestPasswordReset from '../views/RequestPasswordReset/index.vue'
 
 const routes = [
   {
@@ -34,6 +35,14 @@ const routes = [
     path: '/signup',
     name: 'Sign Up',
     component: SignUp,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/requestpasswordreset',
+    name: 'request-password-reset',
+    component: RequestPasswordReset,
     meta: {
       requiresAuth: false
     }
