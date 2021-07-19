@@ -23,6 +23,10 @@
     /* --sp-padding-small: 2rem; */
     --sp-gap: calc(var(--sp-base) * var(--ratio));
     --sp-gap-row: calc(var(--sp-base));
+    /* Breakpoints for reference only
+    ** bp-tablet: 540px;
+    ** desktop: 768px;
+    */
 }
 
 *,
@@ -56,11 +60,14 @@ body {
     background-color: var(--clr-bg);
     color: var(--clr-fg);
     transition: var(--clr-transition);
+    display: grid;
+    min-height: 100vh;
+    outline: 1px solid yellow;
 }
 
 #app {
-    min-height: 100vh;
     display: grid;
+    min-height: 100vh;
     grid-template-rows: auto 1fr auto;
     align-items: space-between;
 }
@@ -182,9 +189,8 @@ fieldset:focus-within legend {
 }
 
 .container {
-    padding: var(--sp-padding);
-    width: 90%;
-    max-width: 1280px;
+    width: 95%;
+    max-width: 1200px;
     margin-inline: auto;
 }
 
@@ -245,4 +251,13 @@ button:focus-visible {
 
 button:active {
     background-color: var(--clr-highlight);
+}
+
+@media (min-width: 768px) {
+    /* Desktop size and above */
+    .container {
+        background-color: yellow;
+        padding: var(--sp-padding);
+        width: 90%;
+    }
 }

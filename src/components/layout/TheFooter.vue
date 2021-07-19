@@ -44,6 +44,7 @@ footer {
   padding: var(--sp-padding);
   opacity: 0.8;
   box-shadow: 0 0 3px var(--clr-fg);
+  margin-block-start: var(--sp-margin);
 }
 .brand {
   display: flex;

@@ -1,5 +1,8 @@
 <template>
   <nav>
+    <div id="nav-mobile">
+      <button class="burger not-minimal"></button>
+    </div>
     <ul>
       <li>
         <RouterLink :to="{ name: 'Home' }">Home</RouterLink>
@@ -45,13 +48,40 @@ const signOut = () => {
 </script>
 
 <style scoped>
-nav ul {
+nav #nav-mobile {
   display: flex;
+  width: 2rem;
+  height: 2rem;
   justify-content: flex-end;
   align-items: center;
-  list-style: none;
-  gap: var(--sp-gap);
-  font-family: var(--ff-body);
+  color: var(--clr-fg);
+  cursor: pointer;
+  margin-inline-start: auto;
+}
+nav #nav-mobile button {
+  width: 100%;
+  height: 15%;
+  padding: 0;
+  color: inherit;
+  background-color: currentColor;
+  box-shadow: 0 0.7rem 0 currentColor, 0 -0.7rem 0 currentColor;
+}
+nav ul {
+  display: none;
+}
+@media (min-width: 768px) {
+  /* desktop size and above */
+  nav #nav-mobile {
+    display: none;
+  }
+  nav ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+    gap: var(--sp-gap);
+    font-family: var(--ff-body);
+  }
 }
 .not-minimal {
   display: v-bind(minimalClass);
