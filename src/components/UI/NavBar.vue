@@ -13,9 +13,9 @@
       >
         <button class="close-menu"></button>
         <li v-if="!isSignedIn">
+        <li v-if="!isSignedIn">
           <RouterLink :to="{ name: 'Sign In' }">Sign In</RouterLink>
         </li>
-        <li v-if="!isSignedIn">
           <RouterLink :to="{ name: 'Sign Up' }">Sign Up</RouterLink>
         </li>
         <li>
@@ -153,7 +153,7 @@ nav ul.nav-desktop {
   nav #nav-mobile {
     display: none;
   }
-  nav-desktop {
+  nav ul.nav-desktop {
     display: flex;
     justify-content: flex-end;
     align-items: center;
