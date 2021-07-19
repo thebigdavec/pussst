@@ -20,7 +20,7 @@ import { useRouter } from 'vue-router'
 import BaseProgressBar from '../../components/UI/BaseProgessBar.vue'
 const store = useStore()
 const router = useRouter()
-const time = '10'
+const time = '5'
 const firstName = computed(() => {
   return store.getters.firstName
 })
