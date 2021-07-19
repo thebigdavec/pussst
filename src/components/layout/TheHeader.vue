@@ -20,5 +20,6 @@ header {
   padding: var(--sp-padding);
   box-shadow: 0 0 3px var(--clr-fg);
   min-height: 5rem;
+  z-index: 2;
 }
 </style>
