@@ -12,6 +12,12 @@
         :class="isMenuOpen && 'active'"
       >
         <button class="close-menu"></button>
+        <li v-if="!isSignedIn">
+          <RouterLink :to="{ name: 'Sign In' }">Sign In</RouterLink>
+        </li>
+        <li v-if="!isSignedIn">
+          <RouterLink :to="{ name: 'Sign Up' }">Sign Up</RouterLink>
+        </li>
         <li>
           <RouterLink :to="{ name: 'Home' }">Home</RouterLink>
         </li>
@@ -20,12 +26,6 @@
         </li>
         <li v-if="isSignedIn">
           <button @click="signOut">Sign Out</button>
-        </li>
-        <li v-if="!isSignedIn">
-          <RouterLink :to="{ name: 'Sign Up' }">Sign Up</RouterLink>
-        </li>
-        <li v-if="!isSignedIn">
-          <RouterLink :to="{ name: 'Sign In' }">Sign In</RouterLink>
         </li>
       </ul>
     </div>
