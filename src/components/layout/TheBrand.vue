@@ -5,7 +5,7 @@
         <img src="../../assets/images/cat-yin-yang-256.png" alt="" />
       </RouterLink>
     </div>
-    <div class="title not-minimal">{{ appName }}</div>
+    <div @click="sendAlert" class="title not-minimal">{{ appName }}</div>
   </div>
 </template>
 
@@ -22,6 +22,13 @@ const minimalClass = computed(() => (props.minimal ? 'none' : 'inline'))
 const appName = computed(() => {
   return store.state.app.name
 })
+const sendAlert = () => {
+  store.dispatch('showAlert', {
+    type: 'error',
+    message: 'This alert is only here for testing purposes. Please ignore it.',
+    time: 5
+  })
+}
 </script>
 
 <style scoped>

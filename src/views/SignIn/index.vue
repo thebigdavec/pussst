@@ -64,9 +64,34 @@ const submitDetails = event => {
         name: userCredential.user.displayName,
         email: userCredential.user.email
       })
+      store.dispatch('showAlert', {
+        type: 'success',
+        message: `Sign in successful. Welcome back, ${store.getters.firstName}`,
+        time: 5
+      })
       router.push({ name: 'Welcome' })
     })
     .catch(error => {
+      switch (error.code) {
+        case 'auth/wrong-password':
+          store.dispatch('showAlert', {
+            type: 'error',
+            message:
+              'Unable to find an account with that email and password combination. Please try again.'
+          })
+          break
+        case 'auth/too-many-requests':
+          store.dispatch('showAlert', {
+            type: 'error',
+            message: 'You have made too many attempts. Please try later.'
+          })
+          break
+        default:
+          store.dispatch('showAlert', {
+            type: 'error',
+            message: 'An unknown error occurred.'
+          })
+      }
       console.log('Error:', error.code, error.message)
     })
 }
