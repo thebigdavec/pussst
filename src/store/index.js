@@ -1,11 +1,13 @@
 import { createStore } from 'vuex'
-import user from './modules/user.js'
+import alert from './modules/alert.js'
 import app from './modules/app.js'
+import user from './modules/user.js'
 
 const store = createStore({
   modules: {
-    user,
-    app
+    alert,
+    app,
+    user
   }
 })
 

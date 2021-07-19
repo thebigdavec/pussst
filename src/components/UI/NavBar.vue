@@ -74,6 +74,10 @@ const isSignedIn = computed(() => {
 })
 const signOut = () => {
   auth.signOut()
+  store.dispatch('showAlert', {
+    type: 'success',
+    message: 'You have successfully signed out.'
+  })
   router.push({ name: 'Home' })
 }
 </script>

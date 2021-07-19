@@ -88,15 +88,26 @@ const submitDetails = event => {
             name: userCredential.user.displayName,
             email: userCredential.user.email
           })
+          store.dispatch('showAlert', {
+            type: 'success',
+            message: `Welcome aboard, ${userCredential.user.displayName}. You have successfully registered with ${store.state.app.name}`
+          })
         })
         .catch(error => console.log('Error:', error.code, error.message))
       router.push({ name: 'Welcome' })
     })
     .catch(error => {
-      if (error.code === 'auth/weak-password') {
-        const passwordField = document.getElementById('password')
-        passwordField.value = ''
-        passwordField.placeholder = 'Please choose a stronger password.'
+      switch (error.code) {
+        case 'auth/weak-password':
+          const passwordField = document.getElementById('password')
+          passwordField.value = ''
+          passwordField.placeholder = 'Please choose a stronger password.'
+          break
+        default:
+          store.dispatch('showAlert', {
+            type: 'error',
+            message: 'Oops! Something went wrong. Please try again later.'
+          })
       }
       console.log('Error:', error.code, error.message)
     })

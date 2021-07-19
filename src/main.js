@@ -32,7 +32,7 @@ import store from './store'
 import { onAuthStateChanged } from 'firebase/auth'
 onAuthStateChanged(auth, user => {
   if (user) {
-    // User is signed in, see docs for a list of available properties
+    // See docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
     const uid = user.uid
     store.dispatch('setCurrentUser', {
@@ -40,14 +40,8 @@ onAuthStateChanged(auth, user => {
       email: user.email,
       name: user.auth.currentUser.displayName
     })
-    // store.dispatch('saveEmail', user.email)
-    // store.dispatch('saveName', user.auth.currentUser.displayName)
-    // ...
   } else {
-    // User is signed out
-    // ...
     store.dispatch('signOut')
-    console.log('User is signed out.')
   }
 })
 createApp(App).use(router).use(store).use(firebaseApp).mount('#app')
