@@ -26,27 +26,17 @@ const firstName = computed(() => {
 })
 const userName = computed(() => store.state.user.name)
 const userEmail = computed(() => store.state.user.email)
-
+function goHome() {
+  router.push({ name: 'Home' })
+}
 onMounted(() => {
-  window.addEventListener(
-    'click',
-    () => {
-      router.push({ name: 'Home' })
-    },
-    {
-      once: true
-    }
-  )
+  window.addEventListener('click', goHome, {
+    once: true
+  })
   setTimeout(() => {
-    window.removeEventListener(
-      'click',
-      () => {
-        router.push({ name: 'Home' })
-      },
-      {
-        once: true
-      }
-    )
+    window.removeEventListener('click', goHome, {
+      once: true
+    })
     router.push({ name: 'Home' })
   }, parseInt(time) * 1000)
 })
