@@ -8,32 +8,16 @@
       </div>
       <div class="title">{{ appName }}</div>
     </div>
-    <nav>
-      <ul>
-        <li><RouterLink :to="{ name: 'Home' }">Home</RouterLink></li>
-        <li v-if="isSignedIn">
-          <RouterLink :to="{ name: 'Friends' }">Friends</RouterLink>
-        </li>
-        <li v-if="isSignedIn">
-          <button @click="signOut">Sign Out</button>
-        </li>
-        <li v-if="!isSignedIn">
-          <RouterLink :to="{ name: 'Sign Up' }">Sign Up</RouterLink>
-        </li>
-        <li v-if="!isSignedIn">
-          <RouterLink :to="{ name: 'Sign In' }">Sign In</RouterLink>
-        </li>
-      </ul>
-      <span v-if="displayName">{{ displayName }}</span>
-    </nav>
+    <NavBar />
   </header>
 </template>
-// //
+
 <script setup>
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { getAuth } from 'firebase/auth'
+import NavBar from '../UI/NavBar.vue'
 const router = useRouter()
 const store = useStore()
 const auth = getAuth()
@@ -44,10 +28,6 @@ const isSignedIn = computed(() => {
   return store.getters.isSignedIn
 })
 const displayName = computed(() => store.state.user.displayName)
-const signOut = () => {
-  auth.signOut()
-  router.push({ name: 'Home' })
-}
 </script>
 
 <style scoped>
@@ -85,7 +65,5 @@ nav ul {
   list-style: none;
   gap: var(--sp-gap);
   font-family: var(--ff-body);
-}
-nav button {
 }
 </style>

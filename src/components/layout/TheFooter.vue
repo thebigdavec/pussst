@@ -12,24 +12,18 @@
       &copy; {{ year }} {{ author }}
       <!-- <small v-if="isSignedIn">- Welcome, {{ firstName }}</small> -->
     </div>
-    <nav>
-      <ul>
-        <li><RouterLink :to="{ name: 'Home' }">Home</RouterLink></li>
-      </ul>
-    </nav>
+    <NavBar minimal />
   </footer>
 </template>
-// //
+
 <script setup>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
+import NavBar from '../UI/NavBar.vue'
 const store = useStore()
 const isSignedIn = computed(() => {
   return store.getters.isSignedIn
 })
-// const firstName = computed(() => {
-//   return store.getters.firstName
-// })
 const appName = computed(() => {
   return store.state.app.name
 })
@@ -69,12 +63,5 @@ footer {
   font-weight: 900;
   letter-spacing: 1px;
   font-size: 1.4rem;
-}
-nav ul {
-  display: flex;
-  justify-content: flex-end;
-  list-style: none;
-  gap: 2ch;
-  font-family: var(--ff-body);
 }
 </style>
