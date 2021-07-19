@@ -17,7 +17,7 @@
     /* Spacing */
     --sp-base: 1em;
     --ratio: 2;
-    --sp-margin: calc(var(--sp-base) / 4);
+    --sp-margin: calc(var(--sp-base) / 1.5);
     --sp-padding: var(--sp-base) calc(var(--sp-base) * var(--ratio));
     --sp-padding-small: calc(var(--sp-base) / 2) calc(var(--sp-base) * var(--ratio) / 2);
     /* --sp-padding-small: 2rem; */
