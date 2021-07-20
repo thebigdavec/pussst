@@ -243,10 +243,27 @@ h1 {
 
 h2 {
     font-size: clamp(2rem, 2.8vw, 4rem);
+    opacity: 0.95;
 }
 
 h3 {
     font-size: clamp(1.4rem, 2vw, 3rem);
+    opacity: 0.9;
+}
+
+h4 {
+    font-size: clamp(1rem, 1.1vw, 1.5rem);
+    opacity: 0.85;
+}
+
+h5 {
+    font-size: clamp(0.9rem, 1vw, 1.4rem);
+    opacity: 0.85;
+}
+
+h6 {
+    font-size: clamp(0.8rem, 0.9vw, 1.2rem);
+    opacity: 0.85;
 }
 
 p {
@@ -254,6 +271,7 @@ p {
     letter-spacing: 0.75px;
     line-height: 1.6;
     max-width: 70ch;
+    opacity: 0.8;
 }
 
 small {
